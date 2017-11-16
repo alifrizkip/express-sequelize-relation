@@ -3,8 +3,12 @@ module.exports = (sequelize, DataTypes) => {
     id: {
       allowNull: false,
       primaryKey: true,
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+    },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     email: {
       type: DataTypes.STRING,
@@ -15,14 +19,24 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
   }, {
-    classMethods: {
-      associate(models) {
-        User.hasMany(models.Context, {
-          foreignKey: 'UserId',
-          onDelete: 'CASCADE',
-        });
-      },
-    },
+    tableName: 'users',
+    timestamps: true,
+    underscored: true,
   });
+
+  User.associate = function (models) {
+    User.hasMany(models.Post, {
+      foreignKey: 'user_id',
+      onDelete: 'CASCADE',
+      as: 'posts',
+    });
+
+    User.hasOne(models.Address, {
+      foreignKey: 'user_id',
+      onDelete: 'CASCADE',
+      as: 'address',
+    })
+  };
+
   return User;
 };
