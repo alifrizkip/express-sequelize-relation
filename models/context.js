@@ -10,7 +10,14 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     classMethods: {
       associate(models) {
-        // associations can be defined here
+        Context.hasMany(models.Task, {
+          foreignKey: 'ContextId',
+          onDelete: 'CASCADE',
+        });
+        Context.belongsTo(models.User, {
+          foreignKey: 'UserId',
+          onDelete: 'CASCADE',
+        });
       },
     },
   });
