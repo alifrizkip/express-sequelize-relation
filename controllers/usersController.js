@@ -1,17 +1,10 @@
 const bcrypt = require('bcrypt');
-const { User, Post, Address } = require('../models');
+const { User, Group, Post, Address } = require('../models');
 
 exports.usersAll = async (req, res) => {
   const users = await User.findAll({
     include: [{
-      model: Post,
-      as: 'posts',
-      attributes: {
-        exclude: ['user_id', 'created_at', 'updated_at'],
-      },
-    }, {
-      model: Address,
-      as: 'address',
+      all: true,
       attributes: {
         exclude: ['user_id', 'created_at', 'updated_at'],
       },
@@ -29,16 +22,11 @@ exports.usersDetail = async (req, res) => {
     where: { id: req.params.id },
 
     include: [{
-      model: Post,
-      as: 'posts',
-      attributes: {
-        exclude: ['user_id', 'created_at', 'updated_at'],
-      },
-    }, {
-      model: Address,
-      as: 'address',
-      attributes: {
-        exclude: ['user_id', 'created_at', 'updated_at'],
+      model: Group,
+      as: 'groups',
+      attributes: ['group'],
+      through: {
+        attributes: [],
       },
     }],
 
