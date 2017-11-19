@@ -10,4 +10,7 @@ router.post('/', groupsController.createGroup);
 router.put('/:id', groupsController.updateGroup);
 router.delete('/:id', groupsController.deleteGroup);
 
+router.post('/:id/add-member', groupsController.addMember);
+router.delete('/:id/delete-member', groupsController.deleteMember);
+
 module.exports = router;
