@@ -22,6 +22,12 @@ module.exports = {
         key: 'id',
       },
     },
+    user_role: {
+      type: Sequelize.ENUM,
+      values: ['admin', 'member'],
+      allowNull: false,
+      defaultValue: 'member',
+    },
     created_at: {
       allowNull: false,
       type: Sequelize.DATE,
