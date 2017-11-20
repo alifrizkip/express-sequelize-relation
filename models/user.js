@@ -18,6 +18,18 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    role: {
+      type: DataTypes.ENUM,
+      values: ['admin', 'member'],
+      allowNull: false,
+      defaultValue: 'member',
+    },
+    active: {
+      type: DataTypes.ENUM,
+      values: ['Y', 'N'],
+      allowNull: false,
+      defaultValue: 'Y',
+    },
   }, {
     tableName: 'users',
     timestamps: true,
