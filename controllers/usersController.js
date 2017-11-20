@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 const {
- User, Group, Post, Address 
+  User, Group, Post, Address,
 } = require('../models');
 
 exports.usersAll = async (req, res) => {
