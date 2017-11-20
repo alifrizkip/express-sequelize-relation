@@ -18,6 +18,18 @@ module.exports = {
       type: Sequelize.STRING,
       allowNull: false,
     },
+    // role: {
+    //   type: Sequelize.ENUM,
+    //   values: ['admin', 'member'],
+    //   allowNull: false,
+    //   defaultValue: 'member',
+    // },
+    // active: {
+    //   type: Sequelize.ENUM,
+    //   values: ['Y', 'N'],
+    //   allowNull: false,
+    //   defaultValue: 'Y',
+    // },
     created_at: {
       allowNull: false,
       type: Sequelize.DATE,
