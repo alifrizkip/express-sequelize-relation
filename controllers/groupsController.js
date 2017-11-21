@@ -39,10 +39,9 @@ exports.getDetailGroup = async (req, res) => {
 
 exports.createGroup = async (req, res) => {
   const userInfo = extractToken(req.headers.authorization);
-  const group = await Group.create({
-    group: req.body.group,
-  });
-
+  // const user = await User.findOne({ where: { id: userInfo.id } });
+  const group = await Group.create({ group: req.body.group });
+  // user.addGroup(group, { update: { user_role: 'admin' } });
   UserGroup.create({
     user_id: userInfo.id,
     group_id: group.id,
