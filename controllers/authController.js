@@ -24,7 +24,7 @@ exports.loginProcess = async (req, res) => {
     active: user.active,
   };
   const token = jwt.sign(payload, 'rahasia', {
-    expiresIn: '1d',
+    expiresIn: '10d',
   });
   return res.json({
     message: 'Login successfully',
